@@ -21,5 +21,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - run: echo "hello world from the firts git action "
-
+    - run:  docker-compose -f docker-compose-build.yaml build --parallel
+    - run : docker tag reverseproxy darylemanuella/reverseproxy:v1    
+    - run : docker tag udagram-api-user darylemanuella/udagram-api-user:v1    
+    - run : docker tag udagram-api-feed darylemanuella/udagram-api-feed:v1    
+    - run : docker tag udagram-frontend darylemanuella/udagram-frontend:v1 
+    - run :   echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin 
+    - run : docker push darylemanuella/reverseproxy:v1
+    - run : docker push darylemanuella/udagram-api-user:v1 
+    - run : docker push darylemanuella/udagram-api-feed:v1
+    - run : docker push darylemanuella/udagram-frontend:v1

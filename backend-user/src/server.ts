@@ -6,7 +6,7 @@ import {IndexRouter} from './controllers/v0/index.router';
 
 import bodyParser from 'body-parser';
 import {config} from './config/config';
-import { V0_USER_MODELS } from './controllers/v0/model.index';
+import {V0_USER_MODELS} from './controllers/v0/model.index';
 
 
 (async () => {
@@ -37,7 +37,7 @@ import { V0_USER_MODELS } from './controllers/v0/model.index';
   app.use('/api/v0/', IndexRouter);
 
   // Root URI call
-  app.get( '/', async ( req, res ) => {
+  app.get( '/', async ( req, res, ) => {
     res.send( '/api/v0/' );
   } );
 
