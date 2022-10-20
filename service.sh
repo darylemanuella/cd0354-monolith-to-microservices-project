@@ -9,5 +9,7 @@ kubectl apply -f frontend-service.yaml
 kubectl apply -f reverseproxy-service.yaml 
 
 kubectl port-forward service/reverseproxy 8080:8080
+kubectl port-forward service/backend-user 8080:8080
+
 kubectl port-forward service/frontend 8100:8100
 kubectl delete hpa backend-feed
